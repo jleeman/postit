@@ -3,11 +3,11 @@
     <p>
       <%= render post.categories %>
     </p>
-    <h4><%= link_to post.title, post.url %></h4>
+    <h4><%= link_to post.title, fix_url(post.url) %></h4>
     <p><%= post.description %></p>
     <p>
       <span class="quiet">Posted by:</span> <%= post.creator.user_name %>
-      <small>at <%= post.created_at %></small>
+      <small>at <%= date_time(post.created_at) %></small>
     </p>
     <span>
       <%= link_to("#{post.comments.size} comments", post_path(post)) %>

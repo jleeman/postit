@@ -11,3 +11,24 @@
 <p>
   <%= @post.description %>
 </p>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= render '/shared/errors', obj: @comment %>
+  <div class="control-group">
+    <%= f.label :body, 'Leave a comment:' %>
+    <%= f.text_area :body, rows: 4, class: 'span5' %>
+  </div>
+  <%= f.submit "Comment", class: 'btn btn-primary' %>
+<% end %>
+
+<h5>Comments</h5>
+
+<% @post.comments.each do |comment| %>
+  <div class="well span8">
+    <p><em><%= comment.body %></em></p>
+    <p>
+      <span class="quiet">By:</span> <%= link_to comment.creator.user_name, '' %>
+      <small>at <%= date_time(comment.created_at) %></small>
+    </p>
+  </div>
+<% end %>
