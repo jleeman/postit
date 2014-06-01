@@ -1,5 +1,5 @@
 # Using rails "concerns"
-
+=begin
 module Voteable
   extend ActiveSupport::Concern
 
@@ -19,6 +19,7 @@ module Voteable
     self.votes.where(vote: false).size
   end
 end
+=end
 
 # Using metaprogramming (ruby), not rails "concerns"
 =begin
